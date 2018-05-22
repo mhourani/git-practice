@@ -46,3 +46,17 @@ class TestClass(object):
             writer.writerow(data[0].keys())
             for item in data:
                 writer.writerow(item.values())
+
+    def mark_json_to_csv(self, json_file_path, outfile_path):
+        """Convert a file containing a list of flat JSON objects to a csv.
+
+        What's a DictWriter, you say? Never heard of it!
+
+        """
+        with open(json_file_path) as f:
+            data = json.load(f)
+        with open(outfile_path, 'w') as fp:
+            writer = csv.writer(fp)
+            writer.writerow(data[0].keys())
+            for item in data:
+                writer.writerow(item.values())
